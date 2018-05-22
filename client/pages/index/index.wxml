@@ -1,7 +1,11 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
+
+
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+
+
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -11,3 +15,11 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
+<!-- <view><open-data type="groupName" open-gid="xxxxxx"></open-data></view>
+<view><open-data type="userNickName" lang="zh_CN"></open-data></view>
+<view><open-data type="userAvatarUrl"></open-data></view>
+<view><open-data type="userGender" lang="zh_CN"></open-data></view>
+<view><open-data type="userCity" lang="zh_CN"></open-data></view>
+<view><open-data type="userProvince" lang="zh_CN"></open-data></view>
+<view><open-data type="userCountry" lang="zh_CN"></open-data></view>
+<view><open-data type="userLanguage" lang="zh_CN"></open-data></view> -->
