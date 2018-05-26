@@ -1,0 +1,19 @@
+/* pages/loading/loading.wxss */
+.loading-container{
+  width: 100%;
+  height: 960rpx;
+}
+
+.loading-container image{
+  width: 100%;
+  height: 960rpx; 
+}
+
+.enter-container{
+  width: 100%;
+}
+
+.enter-button{
+  width: 40%;
+  margin-top: 60rpx;
+}

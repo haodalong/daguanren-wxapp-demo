@@ -1,12 +1,13 @@
 {
-  "pages":[
+  "pages": [    
     "pages/index/index",
+    "pages/loading/loading",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "大官人的博客",
+    "navigationBarTextStyle": "black"
   }
 }

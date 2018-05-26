@@ -1,0 +1,10 @@
+<!--pages/loading/loading.wxml-->
+<view class='loading-container'>
+  <image class="loading-image" style="" mode="scaleToFill" src="/images/index/loading.png"></image>
+</view>
+
+<view class="enter-container">
+  <button class="enter-button" type='primary' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 开启跑团之家 
+  </button>
+</view>
+

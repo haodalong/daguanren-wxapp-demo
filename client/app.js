@@ -29,6 +29,11 @@ App({
               }
             }
           })
+        }else {
+          // 没有授权，重定向到 loading 启动页
+          wx.navigateTo({
+            url: '/pages/loading/loading'
+          })
         }
       }
     })
