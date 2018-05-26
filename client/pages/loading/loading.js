@@ -16,8 +16,11 @@ Page({
    */
   getUserInfo: function (e) {
     // 将获取的用户信息赋值给全局 userInfo 变量，再跳回之前页
-    app.globalData.userInfo = e.detail.userInfo
-    wx.navigateBack()
+    if (e.detail.userInfo){
+      app.globalData.userInfo = e.detail.userInfo
+      wx.navigateBack()
+    }
+
   },
 
   /**
