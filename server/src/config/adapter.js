@@ -53,6 +53,8 @@ exports.model = {
  */
 exports.session = {
   type: 'file',
+timeout: 24 * 3600, //过期时间，默认为一天
+//timeout: 20, //过期时间，默认为一天
   common: {
     cookie: {
       name: 'thinkjs'

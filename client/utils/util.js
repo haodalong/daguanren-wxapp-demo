@@ -1,3 +1,110 @@
+var appInstance = getApp()
+
+const wxlogin = (callback) => {
+  // 登录
+  wx.login({
+    success: res => {
+      // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      if (res.code) {
+
+        //发起网络请求
+        wx.request({
+          url: appInstance.globalData.config.host_url + '/user/wxlogin',
+          method: 'POST',
+          data: {
+            js_code: res.code
+          },
+          dataType: 'json',
+          success: function (res) {
+            if (0 == res.data.errno) {
+              wx.setStorageSync('third_session', res.data.data.third_session)
+              wx.setStorageSync('sessionId', res.data.data.session_id)
+
+              callback(true)
+
+            } else {
+              console.log('登录失败！' + res.data.data.errmsg)
+              callback(false)
+            }
+
+          }
+        })
+      } else {
+        console.log('登录失败！' + res.errMsg)
+        callback(false)
+      }
+    }
+  })
+}
+
+
+const safeRequest = (uri, data, callback) => {
+  var token = null
+  var sessionId = null
+  try {
+    token = wx.getStorageSync('third_session')
+    sessionId = wx.getStorageSync('sessionId')
+
+    if (token) {
+      // Do something with return value
+    }
+  } catch (e) {
+    // Do something when catch error
+    callback(false);
+  }
+  wx.checkSession({    
+    success: function () {      
+      //session_key 未过期，并且在本生命周期一直有效
+
+      wx.request({
+        url: appInstance.globalData.config.host_url + uri, //仅为示例，并非真实的接口地址
+        data: data,
+        method: 'POST',
+        header: {
+          'content-type': 'application/json', // 默认值
+          'x-wxapp-token': token,
+          'Cookie': 'thinkjs=' + sessionId
+        },
+        success: function (res) {
+          if (0 == res.data.errno){
+            callback(res.data)
+          }          
+        }
+      })
+    },
+    fail: function () {
+      // session_key 已经失效，需要重新执行登录流程
+      if (token != null && token != ''){
+        wx.request({
+          url: appInstance.globalData.config.host_url + '/user/deletesession', //仅为示例，并非真实的接口地址
+          method: 'POST',
+          header: {
+            'content-type': 'application/json', // 默认值
+            'x-wxapp-token': token,
+            'Cookie': 'thinkjs=' + sessionId
+          },
+          data: data,
+          success: function (res) {
+            if (0 != res.data.errno) {
+              callback(false);
+            }
+
+          }
+        })
+      }
+      wxlogin(function (flag) {
+        if (flag) {
+          safeRequest(uri, data, callback)
+        }
+      })
+        
+  }
+})
+  
+}
+
+
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -15,5 +122,7 @@ const formatNumber = n => {
 }
 
 module.exports = {
+  wxlogin: wxlogin,
+  safeRequest: safeRequest,
   formatTime: formatTime
 }

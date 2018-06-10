@@ -11,26 +11,7 @@ App({
     } else if (config.mode === 'production'){
       this.globalData.config = config.production;
     }
-    
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          
-          //发起网络请求
-          wx.request({
-            url: this.globalData.config.host_url,
-            data: {
-              code: res.code
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+        
     // 获取用户信息
     wx.getSetting({
       success: res => {

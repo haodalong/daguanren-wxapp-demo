@@ -35,7 +35,8 @@
 				{
 					"id": -1,
 					"name": "登录页",
-					"pathName": "pages/login/login"
+					"pathName": "pages/login/login",
+					"query": ""
 				}
 			]
 		}
