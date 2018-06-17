@@ -1,5 +1,4 @@
-// pages/login/login.js
-const util = require('../../utils/util.js')
+// pages/home/home.js
 Page({
 
   /**
@@ -7,49 +6,6 @@ Page({
    */
   data: {
   
-  },
-
-  /**
-   * 按钮点击触发后的逻辑操作
-   */
-  sendRequest: function (e) {
-    // 
-    if (e) {
-      var data = {
-        name:'dalong'
-      }
-      util.safeRequest('/user/test', data, (data)=>{
-        console.log(data)
-
-      })
-      
-    }
-
-  },
-
-  /**
-   * wx.login
-   */
-  wxlogin: function (e) {
-    // 
-    if (e) {
-      var data = {
-        name: 'dalong'
-      }
-      util.wxlogin()
-    }
-  },
-
-  /**
-   * shopGoods
-   */
-  shopGoods: function (e) {
-    // 
-    if (e) {
-      wx.navigateTo({
-        url: '/packageShop/pages/goods/goods'
-      })
-    }
   },
 
   /**

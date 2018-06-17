@@ -5,6 +5,21 @@
     "pages/logs/logs",
     "pages/login/login"
   ],
+  "subPackages": [
+    {
+      "root": "packageWeibo",
+      "pages": [
+        "pages/home/home"
+      ]
+    },
+    {
+      "root": "packageShop",
+      "pages": [
+        "pages/goods/goods",
+        "pages/order/order"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

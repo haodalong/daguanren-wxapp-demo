@@ -2,3 +2,4 @@
 <text>pages/login/login.wxml</text>
 <button type="primary" bindtap="sendRequest"> primary </button>
 <button type="primary" bindtap="wxlogin"> login </button>
+<button type="primary" bindtap="shopGoods"> shopGoods </button>
