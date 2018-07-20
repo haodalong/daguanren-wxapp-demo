@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "map-route": "plugin://txmap/mapRoute",
+    "txv-video": "plugin://txvideo/video"
+  }
+}

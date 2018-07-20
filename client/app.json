@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/loading/loading",
     "pages/logs/logs",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/plugin/plugin"
   ],
   "subPackages": [
     {
@@ -25,5 +26,15 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "大官人的博客",
     "navigationBarTextStyle": "black"
-  }
+  },
+    "plugins": {
+      "txmap": {
+        "version": "1.0.6",
+        "provider": "wx5bc2ac602a747594"
+      },
+      "txvideo": {
+        "version": "1.1.1",
+        "provider": "wxa75efa648b60994b"
+      }   
+    }
 }

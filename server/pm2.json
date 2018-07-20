@@ -2,7 +2,7 @@
   "apps": [{
     "name": "server",
     "script": "production.js",
-    "cwd": "C:\Users\daguanren-laptop\code\daguanren-wxapp-demo\server",
+    "cwd": "",
     "exec_mode": "fork",
     "max_memory_restart": "1G",
     "autorestart": true,

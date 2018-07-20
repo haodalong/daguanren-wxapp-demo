@@ -13,6 +13,10 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
+
+
+<!-- <tx-video vid="e0354z3cqjp" playerid="txv1"></tx-video> -->
+
 <!-- <view><open-data type="groupName" open-gid="xxxxxx"></open-data></view>
 <view><open-data type="userNickName" lang="zh_CN"></open-data></view>
 <view><open-data type="userAvatarUrl"></open-data></view>
