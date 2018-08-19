@@ -103,6 +103,18 @@ const safeRequest = (uri, data, callback) => {
   
 }
 
+// 生成32位的随机字符串
+function random32() {
+  let str = '',
+    pos = 0,
+    arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+  for (var i = 0; i < 32; i++) {
+    pos = Math.round(Math.random() * (arr.length - 1));
+    str += arr[pos];
+  }
+  return str;
+}
 
 
 const formatTime = date => {
@@ -121,8 +133,12 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+
+
+
 module.exports = {
   wxlogin: wxlogin,
   safeRequest: safeRequest,
-  formatTime: formatTime
+  formatTime: formatTime,
+  random32: random32
 }

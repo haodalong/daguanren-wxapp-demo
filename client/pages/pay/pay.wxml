@@ -1,0 +1,4 @@
+<!--pages/demo/pay/pay.wxml-->
+<text>下单和支付demo教程</text>
+<button size='' type='primary' bindtap='ordersubmit'>下单</button>
+<button size='' type='primary' bindtap='orderpay'>支付</button>

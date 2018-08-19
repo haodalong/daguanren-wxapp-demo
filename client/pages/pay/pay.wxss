@@ -1,0 +1,3 @@
+/* pages/demo/pay/pay.wxss */
+
+button {margin: 30px;}

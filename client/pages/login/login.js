@@ -36,7 +36,9 @@ Page({
       var data = {
         name: 'dalong'
       }
-      util.wxlogin()
+      util.wxlogin(function(flag){
+        console.log(flag)
+      })
     }
   },
 

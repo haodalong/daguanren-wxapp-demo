@@ -1,4 +1,4 @@
-<!--pages/plugin/plugin.wxml-->
+pages/plugin/plugin.wxml
 
  <map-route route-info="{{routeInfo}}"></map-route> 
 
