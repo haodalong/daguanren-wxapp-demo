@@ -11,6 +11,7 @@
   "dependencies": {
     "jsonwebtoken": "^8.2.2",
     "md5": "^2.2.1",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "think-cache": "^1.0.0",
     "think-cache-file": "^1.0.8",
@@ -25,11 +26,11 @@
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
-    "think-watcher": "^3.0.0",
+    "ava": "^2.4.0",
     "eslint": "^4.2.0",
     "eslint-config-think": "^1.0.0",
-    "ava": "^0.18.0",
-    "nyc": "^7.0.0"
+    "nyc": "^15.0.0",
+    "think-watcher": "^3.0.0"
   },
   "repository": "",
   "license": "MIT",
