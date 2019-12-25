@@ -1,5 +1,5 @@
 {
-  "pages": [    
+  "pages": [
     "pages/index/index",
     "pages/loading/loading",
     "pages/logs/logs",
@@ -7,6 +7,11 @@
     "pages/pay/pay",
     "pages/plugin/plugin"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "subPackages": [
     {
       "root": "packageWeibo",
@@ -22,10 +27,23 @@
       ]
     }
   ],
+  "plugins": {
+    "txmap": {
+      "version": "1.0.7",
+      "provider": "wx5bc2ac602a747594"
+    },
+    "txvideo": {
+      "version": "1.2.4",
+      "provider": "wxa75efa648b60994b"
+    }
+  },
+  
+
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "大官人的博客",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
