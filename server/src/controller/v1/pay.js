@@ -99,6 +99,11 @@ module.exports = class extends Base {
 		
 		console.log(orderResultObj.xml);
 		
+		// 需要判断return_code是否正确
+		if(!'SUCCESS' === orderResultObj.xml.return_code){
+			return this.fail('签名不正确');
+		}
+		
 		//3.2、校验微信服务器返回的sign值
 		let validateStr = '';
 		for (let key of Object.keys(orderResultObj.xml).sort()) {
@@ -106,10 +111,13 @@ module.exports = class extends Base {
 				validateStr += key + '=' + orderResultObj.xml[key][0] +'&';
 			}
 		}
+		
+		
 		validateStr += 'key='+think.config('wxapp.partner_key');
 		console.log(validateStr);
 		validateStr = md5(validateStr).toUpperCase();
 		console.log(validateStr);
+		
 		
 		if(validateStr != orderResultObj.xml.sign[0]){
 			return this.fail('微信服务器返回sign不正确');
@@ -125,10 +133,19 @@ module.exports = class extends Base {
 			return this.success(returnResult);
 		}
 		
+		// ——如果微信返回的sign正确,则计算paysign
+		let timeStamp = parseInt(new Date().getTime()/1000);
+		let paySignStr= 'appId=' + think.config('wxapp.appid')+ '&nonceStr='+ orderResultObj.xml.nonce_str[0] + '&package=prepay_id='+ orderResultObj.xml.prepay_id[0] + '&signType=MD5&timeStamp=' + timeStamp + '&key=' + think.config('wxapp.partner_key');
+		let paySign = md5(paySignStr).toUpperCase();
+		
 		//——如果业务结果返回成功，将package和返回结果返回前端
 		const returnResult ={
 			result_code: orderResultObj.xml.result_code[0],
-			package:'prepay_id=' + orderResultObj.xml.prepay_id[0]
+			nonceStr: orderResultObj.xml.nonce_str[0],
+			package:'prepay_id=' + orderResultObj.xml.prepay_id[0],
+			signType: 'MD5',
+			timeStamp: timeStamp,
+			paySign: paySign
 		}
 		
 		return this.success(returnResult);
@@ -172,7 +189,6 @@ module.exports = class extends Base {
 		
 		this.ctx.body = xml;
 		return;
-		
 		
 	}
 	

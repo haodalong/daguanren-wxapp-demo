@@ -1,0 +1,3 @@
+<!--pages/plugin/txmap/txmap.wxml-->
+<text>pages/plugin/txmap/txmap.wxml</text>
+<map-route route-info="{{routeInfo}}"></map-route>

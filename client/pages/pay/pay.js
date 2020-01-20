@@ -26,7 +26,11 @@ Page({
             method: 'POST',
             success: function (res) {  
               console.log(res)            
-              self.paypackage = res.data.data.package
+              self.package = res.data.data.package
+              self.timeStamp = res.data.data.timeStamp + ''
+              self.nonceStr = res.data.data.nonceStr
+              self.signType = res.data.data.signType
+              self.paySign = res.data.data.paySign
             }
           })
         } else {
@@ -38,34 +42,17 @@ Page({
   },
 
   orderpay: function () { 
-    let self = this   
-    let timeStamp = Date.parse(new Date()).toString().substr(0, 10)
-    let nonceStr = util.random32()
-    console.log(this.paypackage)
-    const paySignObj = {
-      'appId': appInstance.globalData.config.appId,
-      'nonceStr': nonceStr,
-      'package': this.paypackage,
-      'signType':'MD5',
-      'timeStamp': timeStamp,
-      'key': appInstance.globalData.config.key
-    }
-
-    const paySignStr = 'appId=' + paySignObj.appId + '&nonceStr=' + paySignObj.nonceStr + '&package=' + paySignObj.package + '&signType=' + paySignObj.signType + '&timeStamp=' + paySignObj.timeStamp + '&key=' + paySignObj.key
-
-    paySignObj.paySign = utilMd5.hexMD5(paySignStr).toUpperCase()
-    console.log(paySignObj)
-    console.log('str is : '+paySignStr)
-    console.log(paySignObj.paySign)
-
+    let self = this
+      
+    
     //调用wx.requestPayment(OBJECT)发起微信支付
     wx.requestPayment(
       {
-        'timeStamp': paySignObj.timeStamp,
-        'nonceStr': paySignObj.nonceStr,
-        'package': paySignObj.package,
-        'signType': paySignObj.signType,
-        'paySign': paySignObj.paySign,
+        'timeStamp': self.timeStamp,
+        'nonceStr': self.nonceStr,
+        'package': self.package,
+        'signType': self.signType,
+        'paySign': self.paySign,
         'success': function (res) {
           // {errMsg: "requestPayment:ok"}
           console.log(res)

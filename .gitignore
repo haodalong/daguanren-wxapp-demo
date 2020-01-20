@@ -1,3 +1,5 @@
 
 .project
 server/src/config/config.js
+client/.DS_Store
+client/pages/plugin/.DS_Store

@@ -1,0 +1,7 @@
+<!--pages/plugin/txvideo/txvideo.wxml-->
+<text>pages/plugin/txvideo/txvideo.wxml</text>
+<txv-video 
+  vid="e0354z3cqjp"  
+  playerid="txv1" 
+  autoplay="{{true}}"
+></txv-video>
