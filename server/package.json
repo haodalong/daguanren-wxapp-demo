@@ -9,7 +9,7 @@
     "lint-fix": "eslint --fix src/"
   },
   "dependencies": {
-    "jsonwebtoken": "^8.2.2",
+    "jsonwebtoken": "^9.0.0",
     "md5": "^2.2.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
